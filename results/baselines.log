@@ -1,0 +1,40 @@
+llama_context: n_ctx_seq (4096) < n_ctx_train (32768) -- the full capacity of the model will not be utilized
+model loaded in 1.04s; 0 cached outputs
+1/40 19.76s ctok=384
+11/40 14.667s ctok=384
+21/40 12.401s ctok=384
+31/40 5.618s ctok=110
+A_raw                P=0.002 R=0.014 F1=0.004 macroF1=0.002 evF1=0.0 unsup=0.998 rev=0.000 abst=0.0
+B_verifier           P=0.016 R=0.014 F1=0.015 macroF1=0.009 evF1=0.0 unsup=0.984 rev=0.000 abst=0.4
+B+_verifier_hedge    P=0.016 R=0.014 F1=0.015 macroF1=0.009 evF1=0.0 unsup=0.984 rev=0.000 abst=0.4
+{'mean_latency_s': 12.187, 'p50_latency_s': 12.926, 'max_latency_s': 19.76, 'mean_completion_tokens': 332.6, 'mean_prompt_tokens': 785.2, 'parse_ok_rate': 0.0, 'truncated_rate': 0.75}
+llama_context: n_ctx_seq (4096) < n_ctx_train (40960) -- the full capacity of the model will not be utilized
+model loaded in 1.43s; 0 cached outputs
+1/40 23.497s ctok=107
+11/40 17.212s ctok=233
+21/40 22.026s ctok=384
+31/40 5.588s ctok=55
+A_raw                P=0.000 R=0.000 F1=0.000 macroF1=0.000 evF1=None unsup=1.000 rev=0.000 abst=0.95
+B_verifier           P=0.000 R=0.000 F1=0.000 macroF1=0.000 evF1=None unsup=0.000 rev=0.000 abst=1.0
+B+_verifier_hedge    P=0.000 R=0.000 F1=0.000 macroF1=0.000 evF1=None unsup=0.000 rev=0.000 abst=1.0
+{'mean_latency_s': 15.421, 'p50_latency_s': 14.604, 'max_latency_s': 24.975, 'mean_completion_tokens': 249.3, 'mean_prompt_tokens': 789.2, 'parse_ok_rate': 0.6, 'truncated_rate': 0.15}
+llama_context: n_ctx_seq (4096) < n_ctx_train (32768) -- the full capacity of the model will not be utilized
+model loaded in 1.48s; 0 cached outputs
+1/40 14.648s ctok=384
+11/40 10.49s ctok=384
+21/40 11.631s ctok=384
+31/40 10.495s ctok=384
+A_raw                P=0.008 R=0.047 F1=0.014 macroF1=0.025 evF1=0.3333 unsup=0.992 rev=0.005 abst=0.0
+B_verifier           P=0.045 R=0.047 F1=0.046 macroF1=0.031 evF1=1.0 unsup=0.955 rev=0.030 abst=0.25
+B+_verifier_hedge    P=0.064 R=0.047 F1=0.054 macroF1=0.033 evF1=1.0 unsup=0.936 rev=0.043 abst=0.5
+{'mean_latency_s': 6.623, 'p50_latency_s': 5.69, 'max_latency_s': 14.648, 'mean_completion_tokens': 231.4, 'mean_prompt_tokens': 580.7, 'parse_ok_rate': 0.05, 'truncated_rate': 0.475}
+llama_context: n_ctx_seq (4096) < n_ctx_train (40960) -- the full capacity of the model will not be utilized
+model loaded in 1.54s; 0 cached outputs
+1/40 26.318s ctok=384
+11/40 6.131s ctok=132
+21/40 4.051s ctok=59
+31/40 3.745s ctok=39
+A_raw                P=0.165 R=0.328 F1=0.220 macroF1=0.222 evF1=1.0 unsup=0.835 rev=0.008 abst=0.0
+B_verifier           P=0.250 R=0.328 F1=0.284 macroF1=0.256 evF1=1.0 unsup=0.750 rev=0.012 abst=0.0
+B+_verifier_hedge    P=0.356 R=0.328 F1=0.342 macroF1=0.298 evF1=1.0 unsup=0.644 rev=0.017 abst=0.75
+{'mean_latency_s': 7.132, 'p50_latency_s': 4.645, 'max_latency_s': 26.318, 'mean_completion_tokens': 138.5, 'mean_prompt_tokens': 584.7, 'parse_ok_rate': 0.675, 'truncated_rate': 0.15}

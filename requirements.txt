@@ -1,0 +1,18 @@
+# Verified on the dev machine (Windows 11, Python 3.10.11, CPU-only) on 2026-11-20.
+# Package metadata and optional extras live in pyproject.toml; this file pins a full working environment.
+torch==2.11.0
+transformers==5.9.0
+peft==0.21.3
+trl==1.14.2
+datasets==4.8.4
+accelerate==1.13.0
+huggingface_hub==1.4.1
+pyyaml==6.0.2
+numpy==2.2.6
+pytest==9.0.2
+# llama.cpp bindings: 0.3.20 verified on Windows; on Linux use the prebuilt CPU wheel (no 0.3.20 Linux wheel exists):
+#   pip install llama-cpp-python==0.3.19 --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
+llama_cpp_python==0.3.20; sys_platform == "win32"
+llama_cpp_python==0.3.19; sys_platform == "linux"
+# anthropic>=1.0 is required only for reverify.eval.opus_competitor (0.39.0 on the dev box predates output_config)
+anthropic>=1.0

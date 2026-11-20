@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+*.pyc
+data/raw/
+data/processed/
+models/
+checkpoints/
+tools/
+exports/
+*.gguf
+.pytest_cache/
+.hf_cache/
+checkpoints_sync/
+configs/_active.yaml
+*.egg-info/
+build/
+# PRIVATE held-out test set: do not publish until the frozen comparison has run (DECISIONS.md D-014).
+# Its entity-name hashes (challenge_v1.entity_hashes.txt) are public so the data build still reproduces.
+benchmark/challenge_v1.jsonl
+_hub/
+checkpoints/**/_hub_staging/

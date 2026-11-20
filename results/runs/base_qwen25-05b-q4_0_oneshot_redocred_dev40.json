@@ -1,0 +1,161 @@
+{
+  "A_raw": {
+    "docs": 40,
+    "gold": 70,
+    "pred": 500,
+    "tp": 1,
+    "fp": 499,
+    "fn": 69,
+    "precision": 0.002,
+    "recall": 0.0143,
+    "micro_f1": 0.0035,
+    "macro_f1": 0.0017,
+    "per_relation_f1": {
+      "CREATOR_OF": 0.0,
+      "EDUCATED_AT": 0.0,
+      "EMPLOYEE_OF": 0.0,
+      "EXECUTIVE_OF": 0.0,
+      "FOUNDER_OF": 0.0,
+      "MEMBER_OF": 0.0155,
+      "OWNS": 0.0,
+      "PARENT_ORG_OF": 0.0,
+      "PART_OF": 0.0
+    },
+    "reversal_error_rate": 0.0,
+    "wrong_relation_rate": 0.018,
+    "unsupported_rate": 0.998,
+    "ungrounded_rate": 0.272,
+    "fp_breakdown": {
+      "fp_reversed": 0,
+      "fp_wrong_relation": 9,
+      "fp_unresolved_entity": 168,
+      "fp_spurious": 322
+    },
+    "ignored_implicit_matches": 0,
+    "evidence_f1": 0.0,
+    "evidence_exact": 0.0,
+    "abstention_accuracy": 0.0,
+    "abstention_cases": 20,
+    "micro_f1_ci95": [
+      0.0,
+      0.0111
+    ],
+    "micro_f1_strict_match": 0.0035
+  },
+  "B_verifier": {
+    "docs": 40,
+    "gold": 70,
+    "pred": 62,
+    "tp": 1,
+    "fp": 61,
+    "fn": 69,
+    "precision": 0.0161,
+    "recall": 0.0143,
+    "micro_f1": 0.0152,
+    "macro_f1": 0.0089,
+    "per_relation_f1": {
+      "CREATOR_OF": 0.0,
+      "EDUCATED_AT": 0.0,
+      "EMPLOYEE_OF": 0.0,
+      "EXECUTIVE_OF": 0.0,
+      "FOUNDER_OF": 0.0,
+      "MEMBER_OF": 0.08,
+      "OWNS": 0.0,
+      "PARENT_ORG_OF": 0.0,
+      "PART_OF": 0.0
+    },
+    "reversal_error_rate": 0.0,
+    "wrong_relation_rate": 0.1452,
+    "unsupported_rate": 0.9839,
+    "ungrounded_rate": 0.0,
+    "fp_breakdown": {
+      "fp_reversed": 0,
+      "fp_wrong_relation": 9,
+      "fp_unresolved_entity": 15,
+      "fp_spurious": 37
+    },
+    "ignored_implicit_matches": 0,
+    "evidence_f1": 0.0,
+    "evidence_exact": 0.0,
+    "abstention_accuracy": 0.45,
+    "abstention_cases": 20,
+    "micro_f1_ci95": [
+      0.0,
+      0.0545
+    ],
+    "micro_f1_strict_match": 0.0152
+  },
+  "B+_verifier_hedge": {
+    "docs": 40,
+    "gold": 70,
+    "pred": 62,
+    "tp": 1,
+    "fp": 61,
+    "fn": 69,
+    "precision": 0.0161,
+    "recall": 0.0143,
+    "micro_f1": 0.0152,
+    "macro_f1": 0.0089,
+    "per_relation_f1": {
+      "CREATOR_OF": 0.0,
+      "EDUCATED_AT": 0.0,
+      "EMPLOYEE_OF": 0.0,
+      "EXECUTIVE_OF": 0.0,
+      "FOUNDER_OF": 0.0,
+      "MEMBER_OF": 0.08,
+      "OWNS": 0.0,
+      "PARENT_ORG_OF": 0.0,
+      "PART_OF": 0.0
+    },
+    "reversal_error_rate": 0.0,
+    "wrong_relation_rate": 0.1452,
+    "unsupported_rate": 0.9839,
+    "ungrounded_rate": 0.0,
+    "fp_breakdown": {
+      "fp_reversed": 0,
+      "fp_wrong_relation": 9,
+      "fp_unresolved_entity": 15,
+      "fp_spurious": 37
+    },
+    "ignored_implicit_matches": 0,
+    "evidence_f1": 0.0,
+    "evidence_exact": 0.0,
+    "abstention_accuracy": 0.45,
+    "abstention_cases": 20,
+    "micro_f1_ci95": [
+      0.0,
+      0.0545
+    ],
+    "micro_f1_strict_match": 0.0152
+  },
+  "efficiency": {
+    "mean_latency_s": 12.187,
+    "p50_latency_s": 12.926,
+    "max_latency_s": 19.76,
+    "mean_completion_tokens": 332.6,
+    "mean_prompt_tokens": 785.2,
+    "parse_ok_rate": 0.0,
+    "truncated_rate": 0.75
+  },
+  "meta": {
+    "run_id": "base_qwen25-05b-q4_0_oneshot_redocred_dev40",
+    "model": "models/qwen2.5-0.5b-instruct-q4_0.gguf",
+    "model_bytes": 428730208,
+    "data": "redocred_dev",
+    "n_docs": 40,
+    "limit": 40,
+    "threads": 4,
+    "short_prompt": false,
+    "grammar": false,
+    "one_shot": true,
+    "load_s": 1.04,
+    "cpu": "AMD64 Family 23 Model 160 Stepping 0, AuthenticAMD",
+    "date": "2026-11-20 18:32",
+    "rescored_with": "scorer v1.1 (lenient unique match, token-bounded grounding)"
+  },
+  "previous_scores": {
+    "A_raw": 0.0035,
+    "B_verifier": 0.015,
+    "B+_verifier_hedge": 0.0152
+  }
+}

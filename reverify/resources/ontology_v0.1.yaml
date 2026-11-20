@@ -1,0 +1,185 @@
+version: "0.1"
+date: "2026-11-20"
+notes: >
+  One canonical direction per relation. Inverse surface forms ("X was acquired by Y",
+  "Y's subsidiary X") are normalized to the canonical direction, so a reversed triple is a
+  measurable direction error rather than an alternative correct answer.
+  A relation is only output when the text states it explicitly (EXTRACT mode).
+  Speculative, planned, negated, rumored or merely implied relations are NOT output.
+  Temporal status (current vs former) is NOT part of v0.1 output (see DECISIONS.md D-006).
+  LOCATED_IN (DocRED P131/P17/P276) is deliberately excluded (DECISIONS.md D-005).
+
+entity_types: [PER, ORG, LOC, PRODUCT, WORK, MISC]
+
+relations:
+  FOUNDER_OF:
+    meaning: Subject founded / co-founded / established the object organization.
+    subject: [PER, ORG]
+    object: [ORG]
+    symmetric: false
+    positive: ["Elon Musk founded SpaceX in 2002.", "SpaceX was co-founded by Elon Musk."]
+    negative: ["Musk is the CEO of Tesla (not a founding statement).", "Musk plans to found a new company."]
+    confusable_with: [EXECUTIVE_OF, EMPLOYEE_OF, OWNS]
+    temporal: "Founding is a completed event; future/planned founding is not FOUNDER_OF."
+    sources: {docred: ["P112^-1"]}
+
+  EXECUTIVE_OF:
+    meaning: Subject holds a named leadership office in the object org (CEO, president, chair, COO, managing director).
+    subject: [PER]
+    object: [ORG]
+    symmetric: false
+    positive: ["Gwynne Shotwell is the president and COO of SpaceX.", "The board is chaired by Jane Roe."]
+    negative: ["Jane Roe is an engineer at Acme (EMPLOYEE_OF).", "Roe is rumored to become CEO."]
+    confusable_with: [EMPLOYEE_OF, FOUNDER_OF]
+    temporal: "Former office holders still satisfy v0.1 when the text states they held the office."
+    sources: {docred: ["P488^-1"]}
+
+  EMPLOYEE_OF:
+    meaning: Subject is or was employed by / works or worked for the object organization (non-leadership or unspecified role).
+    subject: [PER]
+    object: [ORG]
+    symmetric: false
+    positive: ["John worked for Acme between 2015 and 2018.", "She joined IBM as a researcher."]
+    negative: ["John applied to Acme.", "John is a customer of Acme."]
+    confusable_with: [EXECUTIVE_OF, MEMBER_OF, FOUNDER_OF]
+    temporal: "v0.1 does not distinguish former from current (D-006)."
+    sources: {docred: ["P108"]}
+
+  OWNS:
+    meaning: Subject owns / has a controlling ownership of the object (org, product, property).
+    subject: [PER, ORG]
+    object: [ORG, PRODUCT, LOC, MISC]
+    symmetric: false
+    positive: ["The newspaper is owned by News Corp.", "Acme owns the stadium."]
+    negative: ["Acme invested in Beta (INVESTED_IN, not OWNS).", "Acme is considering buying Beta."]
+    confusable_with: [INVESTED_IN, PARENT_ORG_OF, ACQUIRED]
+    temporal: ""
+    sources: {docred: ["P127^-1"]}
+
+  PARENT_ORG_OF:
+    meaning: Subject organization is the parent of the object organization (object is a subsidiary/division/imprint).
+    subject: [ORG]
+    object: [ORG]
+    symmetric: false
+    positive: ["YouTube is a subsidiary of Google.", "Alphabet's subsidiaries include Waymo."]
+    negative: ["Google partnered with YouTube creators (not parent)."]
+    confusable_with: [OWNS, ACQUIRED, PART_OF]
+    temporal: ""
+    sources: {docred: ["P749^-1", "P355"]}
+
+  ACQUIRED:
+    meaning: Subject completed an acquisition / purchase / takeover of the object.
+    subject: [PER, ORG]
+    object: [ORG, PRODUCT, MISC]
+    symmetric: false
+    positive: ["Company A acquired Company B.", "Company B was acquired by Company A (A ACQUIRED B)."]
+    negative: ["Company A is considering purchasing Company B.", "A's bid for B was rejected.", "A and B merged talks collapsed."]
+    confusable_with: [OWNS, PARENT_ORG_OF, INVESTED_IN, PARTNERED_WITH]
+    temporal: "Only completed acquisitions. Announced-but-pending deals are not ACQUIRED in v0.1."
+    policy: "An acquisition statement yields ACQUIRED only. OWNS / PARENT_ORG_OF need their own explicit statement of ownership or parenthood (D-013)."
+    sources: {curated: true}
+
+  INVESTED_IN:
+    meaning: Subject made a (minority or unspecified) investment in the object.
+    subject: [PER, ORG]
+    object: [ORG]
+    symmetric: false
+    positive: ["Company A invested in Company B.", "B raised $10M led by A."]
+    negative: ["A acquired B (ACQUIRED).", "A may invest in B."]
+    confusable_with: [OWNS, ACQUIRED]
+    temporal: ""
+    sources: {curated: true}
+
+  PARTNERED_WITH:
+    meaning: Subject and object entered a partnership / collaboration / joint venture.
+    subject: [PER, ORG]
+    object: [PER, ORG]
+    symmetric: true
+    positive: ["Acme partnered with Beta to build batteries."]
+    negative: ["Acme acquired Beta.", "Acme is in talks to partner with Beta."]
+    confusable_with: [ACQUIRED, MEMBER_OF]
+    temporal: ""
+    sources: {curated: true}
+
+  DEVELOPER_OF:
+    meaning: Subject developed the object product/software/game/vehicle.
+    subject: [PER, ORG]
+    object: [PRODUCT, MISC, WORK]
+    symmetric: false
+    positive: ["SpaceX developed Starship.", "The game was developed by Nintendo."]
+    negative: ["The game was published by Sega (publisher, not developer)."]
+    confusable_with: [MANUFACTURER_OF, CREATOR_OF]
+    temporal: ""
+    sources: {docred: ["P178^-1"]}
+
+  MANUFACTURER_OF:
+    meaning: Subject manufactures / produces the object product or material.
+    subject: [ORG, PER]
+    object: [PRODUCT, MISC]
+    symmetric: false
+    positive: ["The rifle is manufactured by Colt.", "Acme produces steel."]
+    negative: ["Acme sells steel made by Beta."]
+    confusable_with: [DEVELOPER_OF, OWNS]
+    temporal: ""
+    sources: {docred: ["P176^-1", "P1056"]}
+
+  CREATOR_OF:
+    meaning: Subject authored / composed / created the object creative work.
+    subject: [PER, ORG]
+    object: [WORK, MISC, PRODUCT]
+    symmetric: false
+    positive: ["The novel was written by Jane Austen.", "The score was composed by Hans Zimmer."]
+    negative: ["The novel was published by Penguin."]
+    confusable_with: [DEVELOPER_OF]
+    temporal: ""
+    sources: {docred: ["P170^-1", "P50^-1", "P86^-1"]}
+
+  MEMBER_OF:
+    meaning: Subject is/was a member of the object group, party, team, band or organization.
+    subject: [PER, ORG, LOC]
+    object: [ORG]
+    symmetric: false
+    positive: ["He is a member of the Labour Party.", "She played for Arsenal."]
+    negative: ["He spoke at a Labour Party event."]
+    confusable_with: [EMPLOYEE_OF, PART_OF]
+    temporal: ""
+    sources: {docred: ["P463", "P102", "P54"]}
+
+  PART_OF:
+    meaning: Subject is a component / part / division of the object (non-corporate-subsidiary sense).
+    subject: [ORG, LOC, MISC, PRODUCT, WORK]
+    object: [ORG, LOC, MISC, PRODUCT, WORK]
+    symmetric: false
+    positive: ["The engine is part of the Falcon 9 system.", "The album is part of a trilogy."]
+    negative: []
+    confusable_with: [PARENT_ORG_OF, MEMBER_OF]
+    temporal: ""
+    sources: {docred: ["P361", "P527^-1"]}
+
+  HEADQUARTERED_IN:
+    meaning: Subject organization's headquarters are in the object location.
+    subject: [ORG]
+    object: [LOC]
+    symmetric: false
+    positive: ["Acme, headquartered in Austin, ..."]
+    negative: ["Acme opened a store in Austin."]
+    confusable_with: []
+    temporal: ""
+    sources: {docred: ["P159"]}
+
+  EDUCATED_AT:
+    meaning: Subject person studied at / graduated from the object institution.
+    subject: [PER]
+    object: [ORG]
+    symmetric: false
+    positive: ["She graduated from MIT."]
+    negative: ["She lectured at MIT (EMPLOYEE_OF)."]
+    confusable_with: [EMPLOYEE_OF, MEMBER_OF]
+    temporal: ""
+    sources: {docred: ["P69"]}
+
+verification_statuses:
+  VERIFIED: The text explicitly states the claimed triple.
+  UNSUPPORTED: The text does not state the claim (absent, speculative, planned, or wrong direction/relation).
+  CONTRADICTED: The text explicitly states something incompatible with the claim (e.g. negation, "the deal collapsed").
+  AMBIGUOUS: The text is genuinely unclear (e.g. unresolved pronoun between two candidates).

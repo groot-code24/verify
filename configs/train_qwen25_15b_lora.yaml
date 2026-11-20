@@ -1,0 +1,21 @@
+# EXP-006 (planned, GPU): accuracy-first upper bound; exceeds 400 MB at Q4 (~1 GB).
+experiment_id: EXP-006-qwen25-15b-lora-r16
+base_model: Qwen/Qwen2.5-1.5B-Instruct
+model_params_b: 1.5
+data_version: data-v1.1
+seq_len: 1024
+seed: 13
+data:
+  train: {redocred_train_clean: all, synthetic_train: all}
+  eval: {redocred_dev: 150, synthetic_dev: 100}
+lora: {r: 16, alpha: 32, dropout: 0.05, target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]}
+lr: 2.0e-4
+epochs: 2
+warmup_steps: 30
+logging_steps: 10
+eval_steps: 100
+save_steps: 100
+save_total_limit: 3
+output_dir: checkpoints/qwen25_15b_lora
+sync_dir: null        # set to /content/drive/MyDrive/reverify/qwen25_05b (Colab) or /kaggle/working/sync
+overrides: {}

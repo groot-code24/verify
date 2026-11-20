@@ -1,0 +1,4 @@
+--extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
+llama-cpp-python==0.3.19
+huggingface_hub>=1.0
+re-verify @ git+{{GITHUB_URL}}@{{GIT_REF}}

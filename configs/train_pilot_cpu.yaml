@@ -1,0 +1,22 @@
+# Gate 3 pilot: proves data->loss->checkpoint->interrupt->resume->eval mechanics on the dev CPU.
+# Not expected to produce a useful model (135M params, 40 steps).
+experiment_id: EXP-003-pilot-cpu-smollm2-135m
+base_model: HuggingFaceTB/SmolLM2-135M-Instruct
+model_params_b: 0.135
+data_version: data-v1
+seq_len: 512
+seed: 13
+data:
+  train: {synthetic_train: 300, redocred_train: 150}
+  eval: {synthetic_dev: 30, redocred_dev: 20}
+lora: {r: 8, alpha: 16, dropout: 0.05, target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]}
+lr: 3.0e-4
+max_steps: 40
+warmup_steps: 4
+logging_steps: 5
+eval_steps: 20
+save_steps: 10
+save_total_limit: 5
+output_dir: checkpoints/pilot_cpu
+sync_dir: D:/verify/checkpoints_sync/pilot_cpu   # stands in for Google Drive / persistent storage
+overrides: {micro_batch: 1, grad_accum: 4, workers: 0}

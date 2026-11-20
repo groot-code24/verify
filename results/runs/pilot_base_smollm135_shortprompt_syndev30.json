@@ -1,0 +1,170 @@
+{
+  "A_raw": {
+    "docs": 30,
+    "gold": 47,
+    "pred": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 47,
+    "precision": 0.0,
+    "recall": 0.0,
+    "micro_f1": 0.0,
+    "macro_f1": 0.0,
+    "per_relation_f1": {
+      "ACQUIRED": 0.0,
+      "CREATOR_OF": 0.0,
+      "DEVELOPER_OF": 0.0,
+      "EDUCATED_AT": 0.0,
+      "EMPLOYEE_OF": 0.0,
+      "EXECUTIVE_OF": 0.0,
+      "FOUNDER_OF": 0.0,
+      "HEADQUARTERED_IN": 0.0,
+      "INVESTED_IN": 0.0,
+      "MANUFACTURER_OF": 0.0,
+      "MEMBER_OF": 0.0,
+      "OWNS": 0.0,
+      "PARENT_ORG_OF": 0.0,
+      "PARTNERED_WITH": 0.0
+    },
+    "reversal_error_rate": 0.0,
+    "wrong_relation_rate": 0.0,
+    "unsupported_rate": 0.0,
+    "ungrounded_rate": 0.0,
+    "fp_breakdown": {
+      "fp_reversed": 0,
+      "fp_wrong_relation": 0,
+      "fp_unresolved_entity": 0,
+      "fp_spurious": 0
+    },
+    "ignored_implicit_matches": 0,
+    "evidence_f1": null,
+    "evidence_exact": null,
+    "abstention_accuracy": 1.0,
+    "abstention_cases": 4,
+    "micro_f1_ci95": [
+      0.0,
+      0.0
+    ],
+    "micro_f1_strict_match": 0.0
+  },
+  "B_verifier": {
+    "docs": 30,
+    "gold": 47,
+    "pred": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 47,
+    "precision": 0.0,
+    "recall": 0.0,
+    "micro_f1": 0.0,
+    "macro_f1": 0.0,
+    "per_relation_f1": {
+      "ACQUIRED": 0.0,
+      "CREATOR_OF": 0.0,
+      "DEVELOPER_OF": 0.0,
+      "EDUCATED_AT": 0.0,
+      "EMPLOYEE_OF": 0.0,
+      "EXECUTIVE_OF": 0.0,
+      "FOUNDER_OF": 0.0,
+      "HEADQUARTERED_IN": 0.0,
+      "INVESTED_IN": 0.0,
+      "MANUFACTURER_OF": 0.0,
+      "MEMBER_OF": 0.0,
+      "OWNS": 0.0,
+      "PARENT_ORG_OF": 0.0,
+      "PARTNERED_WITH": 0.0
+    },
+    "reversal_error_rate": 0.0,
+    "wrong_relation_rate": 0.0,
+    "unsupported_rate": 0.0,
+    "ungrounded_rate": 0.0,
+    "fp_breakdown": {
+      "fp_reversed": 0,
+      "fp_wrong_relation": 0,
+      "fp_unresolved_entity": 0,
+      "fp_spurious": 0
+    },
+    "ignored_implicit_matches": 0,
+    "evidence_f1": null,
+    "evidence_exact": null,
+    "abstention_accuracy": 1.0,
+    "abstention_cases": 4,
+    "micro_f1_ci95": [
+      0.0,
+      0.0
+    ],
+    "micro_f1_strict_match": 0.0
+  },
+  "B+_verifier_hedge": {
+    "docs": 30,
+    "gold": 47,
+    "pred": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 47,
+    "precision": 0.0,
+    "recall": 0.0,
+    "micro_f1": 0.0,
+    "macro_f1": 0.0,
+    "per_relation_f1": {
+      "ACQUIRED": 0.0,
+      "CREATOR_OF": 0.0,
+      "DEVELOPER_OF": 0.0,
+      "EDUCATED_AT": 0.0,
+      "EMPLOYEE_OF": 0.0,
+      "EXECUTIVE_OF": 0.0,
+      "FOUNDER_OF": 0.0,
+      "HEADQUARTERED_IN": 0.0,
+      "INVESTED_IN": 0.0,
+      "MANUFACTURER_OF": 0.0,
+      "MEMBER_OF": 0.0,
+      "OWNS": 0.0,
+      "PARENT_ORG_OF": 0.0,
+      "PARTNERED_WITH": 0.0
+    },
+    "reversal_error_rate": 0.0,
+    "wrong_relation_rate": 0.0,
+    "unsupported_rate": 0.0,
+    "ungrounded_rate": 0.0,
+    "fp_breakdown": {
+      "fp_reversed": 0,
+      "fp_wrong_relation": 0,
+      "fp_unresolved_entity": 0,
+      "fp_spurious": 0
+    },
+    "ignored_implicit_matches": 0,
+    "evidence_f1": null,
+    "evidence_exact": null,
+    "abstention_accuracy": 1.0,
+    "abstention_cases": 4,
+    "micro_f1_ci95": [
+      0.0,
+      0.0
+    ],
+    "micro_f1_strict_match": 0.0
+  },
+  "efficiency": {
+    "mean_latency_s": 9.09,
+    "p50_latency_s": 7.695,
+    "max_latency_s": 31.475,
+    "mean_completion_tokens": 69.6,
+    "mean_prompt_tokens": 239.1,
+    "parse_ok_rate": 0.0,
+    "truncated_rate": 0.0333
+  },
+  "meta": {
+    "run_id": "pilot_base_smollm135_shortprompt_syndev30",
+    "base": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "adapter": null,
+    "data": "synthetic_dev",
+    "n_docs": 30,
+    "runtime": "transformers fp32",
+    "date": "2026-11-20 19:24",
+    "rescored_with": "scorer v1.1 (lenient unique match, token-bounded grounding)"
+  },
+  "previous_scores": {
+    "A_raw": 0.0,
+    "B_verifier": 0.0,
+    "B+_verifier_hedge": 0.0
+  }
+}
